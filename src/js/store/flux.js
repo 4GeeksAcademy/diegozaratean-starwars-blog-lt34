@@ -12,6 +12,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
+			],
+			starships: [
+				{
+					name: "FIRST",
+					uid: "1",
+					initial: "white"
+				},
+				{
+					name: "SECOND",
+					uid: "2",
+					initial: "white"
+				}
 			]
 		},
 		actions: {
@@ -20,6 +32,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
+				console.log('detecte carga pagina desde flux')
+				
+				fetch('https://swapi.dev/api/starships')
+				.then((response)=>response.json())
+				// .then((data)=> console.log(data.results))
+				.then((data)=> setStore({ starships: data.results }))
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
