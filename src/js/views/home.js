@@ -25,10 +25,14 @@ export const Home = () => {
 			
 		
 
-			<h1>naves desde FLUX!</h1>			
+			<h1>naves desde FLUX!</h1>		
 
-			{ store.starships.map( (nave)=> <Cardnave key={nave.url} uid={nave.url} model={nave.model} name={nave.name}/> ) }
-			
+			<div className="d-flex " style={{overflowX: 'auto'}}>
+				{ store.starships.map( (nave)=> <Cardnave key={nave.url} url={nave.url} uid={nave.url.replace("https://swapi.dev/api/starships/","").replace("/","") } model={nave.model} name={nave.name}/> ) }
+				
+	
+			</div>	
+
 			
 		</div>
 	);
